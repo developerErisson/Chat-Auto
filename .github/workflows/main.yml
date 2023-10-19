@@ -13,7 +13,7 @@ jobs:
       uses: actions/checkout@v3
         
     - name: Deploy para o servidor CentOS
-      uses: appleboy/ssh-action
+      uses: softprops/action-ssh@v1
       with:
         host: 10.251.1.52
         username: root
