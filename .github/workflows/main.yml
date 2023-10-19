@@ -18,10 +18,6 @@ jobs:
         host: 10.251.1.52
         username: root
         password: '@tm@T3c'
-    - name: Navegar para o diretório desejado
-      run: cd /caminho/do/seu/diretorio
 
-    - name: Inicializar um projeto npm
-      run: npm init
            
   
