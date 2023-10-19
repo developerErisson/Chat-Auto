@@ -11,9 +11,10 @@ jobs:
 
     steps:
     - name: Checkout do código
-      uses: actions/setup-node@v2
+      uses: actions/checkout@v2
       with:
-        node-version: 16.18.1
+       submodules: 'recursive'
+       runs-on: node-16
     - name: Deploy para o servidor CentOS
       uses: appleboy/ssh-action@master
       with:
