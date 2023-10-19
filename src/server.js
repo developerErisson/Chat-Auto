@@ -7,12 +7,10 @@ const server = http.createServer(app);
 const io = socketIo(server);
 let rooms = []
 
-// Roteamento para a página HTML do chat
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html');
 });
 
-// Conexão do Socket.io
 io.on('connection', (socket) => {
   console.log('Usuário conectado');
 
@@ -38,12 +36,10 @@ io.on('connection', (socket) => {
     console.log(`Usuário entrou na sala: ${room}`);
   });
 
-  // Lógica para enviar mensagens
   socket.on('message', (data) => {
     io.to(data.room).emit('message', data.message);
   });
 
-  // Lógica para desconectar
   socket.on('disconnect', () => {
     console.log('Usuário desconectado');
   });
@@ -53,8 +49,7 @@ function listRooms(socket) {
 
 }
 
-// Inicie o servidor
 const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {
-  console.log(`Servidor rodando na porta ${PORT}`);
+  console.log(`Servidor is running at ${PORT}!`);
 });
