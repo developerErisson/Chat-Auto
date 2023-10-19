@@ -9,12 +9,14 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
 
-    steps:
+  steps:
+    - name: Usar Node.js 16
+      uses: actions/setup-node@v2
+      with:
+        node-version: 16
+
     - name: Checkout do código
       uses: actions/checkout@v2
-      with:
-       submodules: 'recursive'
-       runs-on: node-16
     - name: Deploy para o servidor CentOS
       uses: appleboy/ssh-action@master
       with:
