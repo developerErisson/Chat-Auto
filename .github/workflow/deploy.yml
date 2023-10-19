@@ -1,0 +1,30 @@
+name: Chat-Auto
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout do código
+      uses: actions/checkout@v2
+
+    - name: Deploy para o servidor CentOS
+      uses: appleboy/ssh-action@master
+      with:
+        host: seu_servidor_ip_ou_hostname
+        username: seu_usuario_ssh
+        key: ${{ secrets.SSH_PRIVATE_KEY }}  # Configure este segredo no GitHub com a chave privada SSH
+
+    - name: Transferir arquivos para o servidor
+      run: |
+        rsync -avz --delete /caminho/local/do/seu/projeto/ seu_usuario_ssh@seu_servidor:/caminho/remote/do/projeto
+
+    - name: Comandos de Deploy no servidor
+      run: |
+        ssh seu_usuario_ssh@seu_servidor 'comando_deploy_remoto'
+

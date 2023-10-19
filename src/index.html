@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat com Socket.io</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-top: 20px;
+        }
+
+        input[type="text"] {
+            width: 80%;
+            padding: 10px;
+            margin: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            width: 80%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+            overflow-y: auto;
+            max-height: 400px;
+        }
+
+        ul li {
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        select {
+            width: 200px;
+            /* largura desejada */
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            appearance: none;
+            /* Remove o estilo padrão do sistema operacional */
+            background-color: #fff;
+            /* Cor de fundo */
+            background-image: url('arrow-down.png');
+            /* Ícone da seta para baixo */
+            background-position: right center;
+            /* Posição da imagem de fundo */
+            background-repeat: no-repeat;
+            cursor: pointer;
+        }
+
+        /* Estilo para as opções do <select> */
+        select option {
+            padding: 10px;
+            font-size: 16px;
+            background-color: #fff;
+            /* Cor de fundo das opções */
+        }
+
+        /* Estilo para as opções quando hover */
+        select option:hover {
+            background-color: #007bff;
+            border: 1px solid #ccc;
+            /* Cor de fundo ao passar o mouse */
+            color: #fff;
+            /* Cor do texto ao passar o mouse */
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Chat com Socket.io</h1>
+    <input type="text" id="roomName" placeholder="Nome Sala">
+    <button onclick="createRoom()">Criar na Sala</button>
+    <br>
+    <select name="" id="listRooms"></select>
+    <input type="text" id="room" placeholder="Sala">
+    <button onclick="joinRoom()">Entrar na Sala</button>
+    <br>
+    <input type="text" id="message" placeholder="Mensagem">
+    <button onclick="sendMessage()">Enviar Mensagem</button>
+    <ul id="chat"></ul>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const socket = io();
+
+        function createRoom() {
+            const nameRoom = document.getElementById('roomName').value;
+            document.getElementById('roomName').value = '';
+            socket.emit('create', nameRoom);
+            socket.emit('reqListRooms');
+        }
+
+        function joinRoom() {
+            const room = document.getElementById('room').value;
+            socket.emit('join', room);
+        }
+
+        function sendMessage() {
+            const room = document.getElementById('room').value;
+            const message = document.getElementById('message').value;
+            socket.emit('message', { room, message });
+        }
+
+        // Função para atualizar a lista de salas
+        function updateRoomList(rooms) {
+            const listRooms = document.getElementById('listRooms');
+            // Limpar as opções existentes
+            while (listRooms.firstChild) {
+                listRooms.removeChild(listRooms.firstChild);
+            }
+            // Adicionar as novas opções
+            rooms.forEach((room) => {
+                const option = document.createElement('option');
+                option.textContent = room.name;
+                listRooms.appendChild(option);
+            });
+        }
+
+        // Receber a lista de salas do servidor
+        socket.on('resListRooms', (rooms) => {
+            console.debug(rooms);
+            updateRoomList(rooms);
+        });
+
+        // Inicialmente, solicitar a lista de salas ao carregar a página
+        socket.emit('reqListRooms');
+
+        socket.on('message', (message) => {
+            const chat = document.getElementById('chat');
+            const li = document.createElement('li');
+            li.textContent = message;
+            chat.appendChild(li);
+        });
+    </script>
+</body>
+
+</html>
