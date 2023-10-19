@@ -18,14 +18,10 @@ jobs:
     - name: Deploy para o servidor CentOS
       uses: appleboy/ssh-action@master
       with:
-        host: 179.131.10.193
+        host: 10.251.1.52
         username: root
-        password: '$tr@ng3!'
+        password: '@tm@T3c'
     - name: Transferir arquivos para o servidor
       run: |
-          git clone https://github.com/developerErisson/Chat-Auto.git /var/www/backend/teste
-
-    - name: Comandos de Deploy no servidor
-      run: |
-        ssh root@electro 'node src/server.js'
-
+          git clone https://github.com/developerErisson/Chat-Auto.git /var/www/backend/chat-auto
+  
