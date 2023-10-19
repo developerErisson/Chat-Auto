@@ -17,7 +17,7 @@ jobs:
       with:
         host: 10.251.1.52
         username: root
-        password: '@tm@T3c'
+        key: SHA256:qbt9VatE8sfvvLomjU4bKnHRQIxFjADQVI8r59/KrTE.
     - name: Navegar para o diretório desejado
       run: cd /caminho/do/seu/diretorio
 
