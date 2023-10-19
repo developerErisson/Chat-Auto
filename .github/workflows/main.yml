@@ -18,10 +18,10 @@ jobs:
       with:
         host: 10.251.1.52
         username: root
-        key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC3UKtVVHnu1JDWRjp66Xaa6axOReghazNYRbdygGdWTN+YTPsXEY5WvK0NTFt6cmScI/IRyPO7XlqZSxt32Ob0/0vn+XoeZwyuu2SxnDhqkZWAFT0Tby9dk3x45Z3LTK3uBlbc7qCFzGsUOLg78kyC68trtRnIFYJYxCIjeC3H62dZ2etxGfSMbcdoLzldEcjE9edMfwtsoIyWot0PEgUl0F/GnSmGdH6j+x+w247IqHruaR4EwwnGKTATh/Ib97FvHeDngq6eeggzLzmTEbKdb4GtkAofwg6KahEKK3kpbxrchOiJgXYG7J/pDVPyYVgBX8ex2EWq1PbNxANaf/ZR root@electro.atmatec.com.br
+        key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDd/7kdLBTpMtO9X4AaMdIo0NRlpWFgSkZ7y6j5cI7heJVLnsq63VFpz/cQoMmk79CNhWZz9m4OzTcaOBUjFuvK8RJBUq2aIp1/i3OwUSKuQBKHM1dpjTPGPI0aIRNtjgWPO96GnvBpCXX1pqHL6Pl03+RjDsPvo5L13SubTGi/ujtd+9zr95pmTK9HTqzwWwutZFOE8pTl7iYiRgRMEWsBjxRWtjrBw8cCky4KmhewRhzlEmCuTsM+r+ES/9yMPkpC1s8NFwBa1Vt5gQJ/PkOGFV9gQ0bg/DItZPj9qrqlbxBUwtriXsW7aIf1fhTTB+OiY0yKc+49+Eiq/TO8gaGz root@electro.atmatec.com.br
     - name: Transferir arquivos para o servidor
       run: |
-          git clone https://github.com/developerErisson/Chat-Auto.git /caminho/remote/do/projeto
+          git clone https://github.com/developerErisson/Chat-Auto.git /var/www/backend/chat-auto
 
     - name: Comandos de Deploy no servidor
       run: |
