@@ -18,7 +18,7 @@ jobs:
       with:
         host: 10.251.1.52
         username: root
-        key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDd/7kdLBTpMtO9X4AaMdIo0NRlpWFgSkZ7y6j5cI7heJVLnsq63VFpz/cQoMmk79CNhWZz9m4OzTcaOBUjFuvK8RJBUq2aIp1/i3OwUSKuQBKHM1dpjTPGPI0aIRNtjgWPO96GnvBpCXX1pqHL6Pl03+RjDsPvo5L13SubTGi/ujtd+9zr95pmTK9HTqzwWwutZFOE8pTl7iYiRgRMEWsBjxRWtjrBw8cCky4KmhewRhzlEmCuTsM+r+ES/9yMPkpC1s8NFwBa1Vt5gQJ/PkOGFV9gQ0bg/DItZPj9qrqlbxBUwtriXsW7aIf1fhTTB+OiY0yKc+49+Eiq/TO8gaGz root@electro.atmatec.com.br
+        key: ${{secrets.PASS}}
     - name: Transferir arquivos para o servidor
       run: |
           git clone https://github.com/developerErisson/Chat-Auto.git /var/www/backend/chat-auto
