@@ -1,0 +1,29 @@
+name: Chat-Auto
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout do código
+      uses: actions/checkout@v2
+
+    - name: Deploy para o servidor CentOS
+      uses: appleboy/ssh-action@master
+      with:
+        host: 10.251.1.52
+        username: root
+        key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC3UKtVVHnu1JDWRjp66Xaa6axOReghazNYRbdygGdWTN+YTPsXEY5WvK0NTFt6cmScI/IRyPO7XlqZSxt32Ob0/0vn+XoeZwyuu2SxnDhqkZWAFT0Tby9dk3x45Z3LTK3uBlbc7qCFzGsUOLg78kyC68trtRnIFYJYxCIjeC3H62dZ2etxGfSMbcdoLzldEcjE9edMfwtsoIyWot0PEgUl0F/GnSmGdH6j+x+w247IqHruaR4EwwnGKTATh/Ib97FvHeDngq6eeggzLzmTEbKdb4GtkAofwg6KahEKK3kpbxrchOiJgXYG7J/pDVPyYVgBX8ex2EWq1PbNxANaf/ZR
+    - name: Transferir arquivos para o servidor
+      run: |
+          git clone https://github.com/developerErisson/Chat-Auto.git /caminho/remote/do/projeto
+
+    - name: Comandos de Deploy no servidor
+      run: |
+        ssh root@electro 'node src/server.js'
+
