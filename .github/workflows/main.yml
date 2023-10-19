@@ -14,9 +14,9 @@ jobs:
         
     - name: Deploy para o servidor CentOS
       uses: appleboy/ssh-action@v0.1.9
-        host: 10.251.1.52
-        username: root
-        password: '@tm@T3c'
+       host: 10.251.1.52
+       username: root
+       password: '@tm@T3c'
 
            
   
