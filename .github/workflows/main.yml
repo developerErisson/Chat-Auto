@@ -13,11 +13,11 @@ jobs:
       uses: actions/checkout@v3
         
     - name: Deploy para o servidor CentOS
-      uses: appleboy/ssh-action@master
+      uses: appleboy/ssh-action@v1.0.0
       with:
         host: 10.251.1.52
         username: root
-        key: SHA256:qbt9VatE8sfvvLomjU4bKnHRQIxFjADQVI8r59/KrTE.
+        key: '@tm@T3c'
     - name: Navegar para o diretório desejado
       run: cd /caminho/do/seu/diretorio
 
