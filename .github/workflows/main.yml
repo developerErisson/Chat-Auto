@@ -15,7 +15,7 @@ jobs:
     - name: Deploy para o servidor CentOS
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       with:
-        host: 10.251.1.52
+        server: 10.251.1.52
         username: root
         password: '@tm@T3c'
 
