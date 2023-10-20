@@ -11,10 +11,9 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
-        
-    - name: Deploy para o servidor CentOS
-      uses: appleboy/ssh-action@v1.0.0
-      with:
-        host: 10.251.1.52
-        username: root
-        password: '@tm@T3c'
+
+    - name: teste
+      run: cd /var/www/
+
+    - name: teste 2
+      run: npm init
