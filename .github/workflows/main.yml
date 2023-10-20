@@ -23,7 +23,7 @@ jobs:
             remote_path: '/var/www'
             sftp_only: true
             password: '@tm@T3c'
-            sftpArgs: '-o ConnectTimeout=5 -o StrictHostKeyChecking=no'
+            sftpArgs: '-o ConnectTimeout=5'
 
            
   
