@@ -16,4 +16,4 @@ jobs:
       run: cd /var/www/
 
     - name: teste 2
-      run: npm init
+      run: npm init -y
