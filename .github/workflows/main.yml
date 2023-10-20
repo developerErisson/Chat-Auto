@@ -18,7 +18,7 @@ jobs:
         server: 10.251.1.52
         username: root
         password: '@tm@T3c'
-        port: 21
+        port: 20
 
            
   
